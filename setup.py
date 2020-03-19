@@ -1,8 +1,8 @@
 from setuptools import setup
 
 setup(
-    name = 'mplstereonet_edit',
-    version = '0.6-dev',
+    name = 'mplstereonetedit',
+    version = '0.7-dev',
     description = "Stereonets for matplotlib",
     author = 'Joe Kington',
     author_email = 'joferkington@gmail.com',
