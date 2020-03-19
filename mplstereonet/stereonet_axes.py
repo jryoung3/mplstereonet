@@ -447,6 +447,28 @@ class StereonetAxes(LambertAxes):
         args, kwargs = self._point_plot_defaults(args, kwargs)
         return self.plot(lon, lat, *args, **kwargs)
 
+    def dipvect(self, strike, dip, *args, **kwargs):
+        """
+        Plot points representing poles to planes on the axes. Additional
+        arguments and keyword arguments are passed on to `ax.plot`.
+
+        Parameters
+        ----------
+        strike, dip : numbers or sequences of numbers
+            The strike and dip of the plane(s) in degrees. The dip direction is
+            defined by the strike following the "right-hand rule".
+        **kwargs
+            Additional parameters are passed on to `plot`.
+
+        Returns
+        -------
+        A sequence of Line2D artists representing the point(s) specified by
+        `strike` and `dip`.
+        """
+        lon, lat = stereonet_math.pole(strike, dip)
+        args, kwargs = self._point_plot_defaults(args, kwargs)
+        return self.plot(lon, lat, *args, **kwargs)
+    
     def rake(self, strike, dip, rake_angle, *args, **kwargs):
         """
         Plot points representing lineations along planes on the axes.

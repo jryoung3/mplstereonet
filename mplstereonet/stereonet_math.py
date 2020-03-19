@@ -207,6 +207,33 @@ def pole(strike, dip):
     lon, lat = _rotate(lon, lat, strike)
     return lon, lat
 
+def dipvect(strike, dip):
+    """
+    Calculates the longitude and latitude of the pole(s) to the plane(s)
+    specified by `strike` and `dip`, given in degrees.
+
+    Parameters
+    ----------
+    strike : number or sequence of numbers
+        The strike of the plane(s) in degrees, with dip direction indicated by
+        the azimuth (e.g. 315 vs. 135) specified following the "right hand
+        rule".
+    dip : number or sequence of numbers
+        The dip of the plane(s) in degrees.
+
+    Returns
+    -------
+    lon, lat : Arrays of longitude and latitude in radians.
+    """
+    strike, dip = np.atleast_1d(strike, dip)
+    mask = dip > 90
+    dip[mask] = 180 - dip[mask]
+    strike[mask] += 180
+    # Plot the approriate point for a strike of 0 and rotate it
+    lon, lat = dip, 0.0
+    lon, lat = _rotate(lon, lat, strike)
+    return lon, lat
+
 def rake(strike, dip, rake_angle):
     """
     Calculates the longitude and latitude of the linear feature(s) specified by

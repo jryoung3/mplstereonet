@@ -1,5 +1,5 @@
 from .stereonet_axes import StereonetAxes
-from .stereonet_math import pole, plane, line, rake
+from .stereonet_math import pole, plane, line, rake, dipvect
 from .stereonet_math import plunge_bearing2pole, pole2plunge_bearing
 from .stereonet_math import geographic2pole, geographic2plunge_bearing
 from .stereonet_math import xyz2stereonet, stereonet2xyz, azimuth2rake
@@ -15,7 +15,7 @@ from .analysis import fit_girdle, fit_pole, cov_eig, eigenvectors, \
 
 __version__ = '0.6-dev'
 
-__all__ = ['StereonetAxes', 'pole', 'plane', 'line', 'rake',
+__all__ = ['StereonetAxes', 'pole', 'plane', 'line', 'rake','dipvect',
            'plunge_bearing2pole', 'geographic2pole', 'vector2plunge_bearing',
            'geographic2plunge_bearing', 'density_grid', 'plane_intersection',
            'xyz2stereonet', 'stereonet2xyz', 'vector2pole', 'antipode',
